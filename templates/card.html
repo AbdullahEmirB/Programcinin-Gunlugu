@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta
+      name="viewport"
+      content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"
+    >
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="../static/css/style.css">
+    <style>
+        /* Günlüğü Sil butonu */
+        .delete-button {
+            display: inline-block;
+            padding: 10px 20px;
+            margin-top: 10px;
+            background-color: #e53935;
+            color: white;
+            border: 2px solid #e53935;
+            border-radius: 5px;
+            transition: opacity 0.3s;
+        }
+
+        .delete-button:hover {
+            opacity: 0.8;
+        }
+    </style>
+    <title>Programcının Kütüphanesi</title>
+</head>
+<body>
+    <header class="header">
+        <img src="../static/img/logo.svg" alt="logo" width="50" height="50">
+        <ul class="main-list">
+            <li class="list__item">
+              <a href="">
+                <img
+                  src="../static/img/login.svg"
+                  alt="login"
+                  width="35"
+                  height="35"
+                >
+              </a>
+            </li>
+        </ul>
+    </header>
+    <main class="main">
+        {% block content %}
+        <h1 class="main__title">{{card.title}}</h1>
+        <div class="main__block">
+          <h2 class="main__subtitle">{{card.subtitle}}</h2>
+          <div class="main__text">{{card.text}}</div>
+          <a class="main__link" href="/index">Kayıtlara geri dön</a>
+          <form action="/delete/{{card.id}}" method="post">
+            <button type="submit" class="delete-button">Günlüğü Sil</button>
+          </form>
+        </div>
+        {% endblock %}
+    </main>
+    <footer>
+
+    </footer>
+</body>
+</html>

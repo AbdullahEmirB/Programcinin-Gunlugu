@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Programcının Günlüğü</title>
+    <link rel="stylesheet" href="../static/css/style.css">
+    <style>
+        /* Power By metni için stil */
+        .footer {
+            position: fixed;
+            bottom: 20px; /* 20 piksel altına yerleştirildi */
+            left: 50%; /* Sayfanın ortasına hizalandı */
+            transform: translateX(-50%); /* Yatayda tam ortalamak için */
+            font-family: 'Quicksand', sans-serif;
+            font-size: 20px; /* Font boyutunu küçülttük */
+            color: black;
+            padding: 10px 20px; /* Kenar boşlukları */
+            border-radius: 50px; /* Yuvarlak kenarlılık */
+            border: 2px solid black; /* Siyah kenarlık */
+        }
+
+        /* Login resmi için stil */
+        .login-img {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            width: 35px;
+            height: 35px;
+        }
+    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header class="header">
+        <img src="../static/img/logo.svg" alt="logo" width="50" height="50">
+        <img src="../static/img/login.svg" alt="login" class="login-img">
+        <ul class="main-list"></ul>
+    </header>
+    <main class="main-login">
+        {% block content %}
+        <form action="{{ url_for('login') }}" method="POST" class="login">
+            <p class="error">{{error}}</p>
+
+            <!-- Ödev #2. Giriş alanları oluştur -->
+            <label for="username">
+                <input
+                    class="form__input"
+                    type="text"
+                    name="username"
+                    id="username"
+                    placeholder="Kullanıcı adı girin"
+                    required
+                />
+            </label>
+
+            <label for="password">
+                <input
+                    class="form__input"
+                    type="password"
+                    name="password"
+                    id="password"
+                    placeholder="Şifre girin"
+                    required
+                />
+            </label>
+
+            <!--  -->
+            <button class="form__button">Giriş</button>
+            <a href="/reg" class="form__button reg__link">Kayıt Ol</a>
+        </form>
+        {% endblock %}
+    </main>
+    <!-- Power By metni -->
+    <div class="footer">
+        POWER BY ABDULLAH EMIR B.
+    </div>
+</body>
+</html>
